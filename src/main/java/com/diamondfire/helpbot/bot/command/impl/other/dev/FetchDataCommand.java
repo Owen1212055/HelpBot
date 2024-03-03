@@ -27,7 +27,8 @@ import com.github.steveice10.packetlib.packet.Packet;
 import com.github.steveice10.packetlib.tcp.TcpClientSession;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.utils.FileUpload;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -74,7 +75,7 @@ public class FetchDataCommand extends Command {
     public void run(CommandEvent event) {
         List<String> flags = event.getArgument("flag");
         if (flags == null) {
-            setup(event.getChannel());
+            setup(event.getChannel().asTextChannel());
         } else {
             boolean includeColors = false;
             boolean updateDb = true;
@@ -85,7 +86,7 @@ public class FetchDataCommand extends Command {
                     updateDb = false;
                 }
             }
-            setup(event.getChannel(), includeColors, updateDb);
+            setup(event.getChannel().asTextChannel(), includeColors, updateDb);
         }
     }
     
@@ -134,7 +135,7 @@ public class FetchDataCommand extends Command {
                 status(sentMessage, "Finished!");
             } else {
                 status(sentMessage, "Finished!");
-                sentMessage.getChannel().sendFile(file).queue();
+                sentMessage.getChannel().sendFiles(FileUpload.fromData(file)).queue();
             }
         }).exceptionally((exception) -> {
             error(sentMessage, exception);

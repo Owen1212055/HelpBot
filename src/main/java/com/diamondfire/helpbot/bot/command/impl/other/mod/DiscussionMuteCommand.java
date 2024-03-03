@@ -15,6 +15,7 @@ import com.diamondfire.helpbot.sys.database.impl.queries.BasicQuery;
 import com.diamondfire.helpbot.sys.tasks.impl.MuteExpireTask;
 import com.diamondfire.helpbot.util.*;
 import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.time.*;
 import java.time.temporal.TemporalAdjusters;
@@ -86,7 +87,7 @@ public class DiscussionMuteCommand extends Command {
             Guild guild = event.getGuild();
             TextChannel channel = guild.getTextChannelById(DISCUSSION_CHANNEL);
             guild.retrieveMemberById(user).queue((member) -> {
-                channel.putPermissionOverride(member).deny(net.dv8tion.jda.api.Permission.MESSAGE_ADD_REACTION, net.dv8tion.jda.api.Permission.MESSAGE_WRITE).queue();
+                //channel.get.putPermissionOverride(member).deny(net.dv8tion.jda.api.Permission.MESSAGE_ADD_REACTION, net.dv8tion.jda.api.Permission.MESSAGE_WRITE).queue();
             });
             
             HelpBotInstance.getScheduler().schedule(new MuteExpireTask(user, duration, true));

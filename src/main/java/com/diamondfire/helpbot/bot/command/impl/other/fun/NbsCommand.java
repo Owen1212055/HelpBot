@@ -11,6 +11,7 @@ import com.diamondfire.helpbot.util.nbs.*;
 import com.google.gson.*;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.awt.*;
 import java.io.*;
@@ -40,7 +41,7 @@ public class NbsCommand extends Command {
     
     @Override
     public void run(CommandEvent event) {
-        TextChannel channel = event.getChannel();
+        TextChannel channel = event.getChannel().asTextChannel();
         PresetBuilder nbsPreset = new PresetBuilder()
             .withPreset(new InformativeReply(InformativeReplyType.ERROR,"You need to attach an nbs file!"));
         PresetBuilder error = new PresetBuilder()

@@ -6,6 +6,7 @@ import com.diamondfire.helpbot.sys.database.impl.DatabaseQuery;
 import com.diamondfire.helpbot.sys.database.impl.queries.BasicQuery;
 import com.diamondfire.helpbot.sys.tasks.OneTimeTask;
 import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 import java.sql.*;
 import java.time.*;
@@ -45,7 +46,7 @@ public class MuteExpireTask implements OneTimeTask {
             });
             
         } else {
-            guild.removeRoleFromMember(member, guild.getRoleById(MuteCommand.ROLE_ID)).queue();
+            guild.removeRoleFromMember(UserSnowflake.fromId(member), guild.getRoleById(MuteCommand.ROLE_ID)).queue();
         }
         
         new DatabaseQuery()

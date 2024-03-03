@@ -49,12 +49,12 @@ public class HelpBotInstance {
                 new SearchCommand(),
                 new TagsCommand(),
                 // others
-                new CowsayCommand(),
+                //new CowsayCommand(),
                 new MimicCommand(),
-                new FetchDataCommand(),
+                //new FetchDataCommand(),
                 new InfoCommand(),
                 new EvalCommand(),
-                new GarfieldCommand(),
+                //new GarfieldCommand(),
                 new HelpCommand(),
                 new RestartCommand(),
                 new ActionDumpCommand(),
@@ -75,9 +75,9 @@ public class HelpBotInstance {
                 new MutedCommand(),
                 new UnmuteCommand(),
                 new VerifyCommand(),
-                new PollCommand(),
+                //new PollCommand(),
                 new IdeaCommand(),
-                new StoreCommand(),
+                //new StoreCommand(),
                 new ChannelMuteCommand(),
                 // statsbot
                 new StatsCommand(),
@@ -122,18 +122,18 @@ public class HelpBotInstance {
                 new ExcuseStaffCommand(),
                 new ExcusedStaffCommand(),
                 new SupportBannedPlayersCommand(),
-                new DiscussionMuteCommand(),
-                new NbsCommand(),
+                //new DiscussionMuteCommand(),
+                //new NbsCommand(),
                 new DailySessionsCommand(),
                 new EightBallCommand(),
-                new OcrCommand(),
+                //new OcrCommand(),
                 new JoinsCommand(),
                 new TagCommand(),
                 new PurgeCommand()
         );
         
         JDABuilder builder = JDABuilder.createDefault(config.getToken())
-                .enableIntents(GatewayIntent.GUILD_MEMBERS)
+                .enableIntents(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.DIRECT_MESSAGES, GatewayIntent.DIRECT_MESSAGE_REACTIONS)
                 .setStatus(OnlineStatus.ONLINE)
                 .setMemberCachePolicy(MemberCachePolicy.NONE)
                 .setActivity(Activity.watching("for " + getConfig().getPrefix() + "help"))

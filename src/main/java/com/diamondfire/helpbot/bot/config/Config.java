@@ -88,6 +88,10 @@ public class Config {
         return getPropertyString("report_webhook");
     }
     
+    public long getPermission(String role) {
+        return this.config.get("permission_roles").getAsJsonObject().get(role).getAsLong();
+    }
+    
     private long getPropertyLong(String property) {
         return config.get(property).getAsLong();
     }
@@ -95,5 +99,6 @@ public class Config {
     private String getPropertyString(String property) {
         return config.get(property).getAsString();
     }
+    
     
 }
