@@ -6,8 +6,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
-
 public class MessageEvent extends ListenerAdapter {
     
     private static final MessageAcceptor[] acceptors = {

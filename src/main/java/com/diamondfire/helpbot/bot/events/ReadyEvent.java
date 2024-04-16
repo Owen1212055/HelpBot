@@ -6,8 +6,6 @@ import com.diamondfire.helpbot.sys.rolereact.RoleReactListener;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
-
 public class ReadyEvent extends ListenerAdapter {
     
     @Override
